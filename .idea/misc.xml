@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/activity_project_deatil.xml" value="0.22" />
+        <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/activity_search_user.xml" value="0.22" />
         <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/activity_sign_up.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/add_team_dlg.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/chip.xml" value="0.4466666666666667" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/project_sample.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/sample_members.xml" value="0.2" />
         <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/sample_students.xml" value="0.22" />
+        <entry key="..\:/Users/Sahil/AndroidStudioProjects/ProjectTracker/app/src/main/res/layout/sample_users.xml" value="0.2" />
       </map>
     </option>
   </component>
