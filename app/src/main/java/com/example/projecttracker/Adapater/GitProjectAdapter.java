@@ -60,6 +60,7 @@ public class GitProjectAdapter extends RecyclerView.Adapter<GitProjectAdapter.Vi
                 hashMap.put("project_name", projects.get(position));
                 hashMap.put("report","");
                 hashMap.put("ppt","");
+                hashMap.put("uid",auth.getCurrentUser().getUid());
 
                 firestore.collection("Students").document(auth.getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override

@@ -109,6 +109,7 @@ public class SearchUserActivity extends AppCompatActivity {
                                             }
                                         }
                                         else {
+                                            binding.instSpinner.setSelection(2);
                                             Users users = snapshot.toObject(Users.class);
                                             users.setUserid(snapshot.getId());
                                             if (!users.getUserid().equals(FirebaseAuth.getInstance().getUid()) && !list.contains(users)) {

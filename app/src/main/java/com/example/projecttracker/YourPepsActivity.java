@@ -1,4 +1,4 @@
-package com.example.projecttracker.Adapater;
+package com.example.projecttracker;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,10 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Toast;
 
+import com.example.projecttracker.Adapater.UserAdapter;
 import com.example.projecttracker.Models.Users;
-import com.example.projecttracker.R;
 import com.example.projecttracker.databinding.ActivityYourPepesBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -20,7 +19,6 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class YourPepsActivity extends AppCompatActivity {
     ActivityYourPepesBinding binding;

@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectTracker">
         <activity
-            android:name=".Adapater.YourPepsActivity"
+            android:name=".OtherUserProjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".YourPepsActivity"
             android:exported="false" />
         <activity
             android:name=".UserProfileActivity"

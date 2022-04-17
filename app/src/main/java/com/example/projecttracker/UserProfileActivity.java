@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.projecttracker.Adapater.ChipAdapter;
+import com.example.projecttracker.Adapater.ChipAdapter2;
 import com.example.projecttracker.Adapater.MyProjectsAdapter;
+import com.example.projecttracker.Adapater.MyProjectsAdapter2;
 import com.example.projecttracker.databinding.ActivityUserProfileBinding;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -21,9 +23,10 @@ public class UserProfileActivity extends AppCompatActivity {
     ActivityUserProfileBinding binding;
     FirebaseFirestore firestore;
     String uid;
-    ChipAdapter chipAdapter;
-    MyProjectsAdapter myProjectsAdapter;
+    ChipAdapter2 chipAdapter;
+    MyProjectsAdapter2 myProjectsAdapter;
     ArrayList<String> list;
+    ArrayList<String> list2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         firestore=FirebaseFirestore.getInstance();
         list=new ArrayList<>();
+        list2=new ArrayList<>();
 
         uid=getIntent().getStringExtra("uid");
 
@@ -46,7 +50,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 binding.userDeg.setText(""+value.get("Degree"));
                 binding.userPassout.setText(""+value.get("Passing Year"));
 
-                chipAdapter = new ChipAdapter((List<String>) value.get("Skills"),UserProfileActivity.this);
+                chipAdapter = new ChipAdapter2((List<String>) value.get("Skills"),UserProfileActivity.this);
                 binding.userSkills.setAdapter(chipAdapter);
 
             }
@@ -57,8 +61,9 @@ public class UserProfileActivity extends AppCompatActivity {
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 for(DocumentSnapshot snapshot:value.getDocuments()){
                     list.add(""+snapshot.get("project_name"));
+                    list2.add(""+uid);
                 }
-                myProjectsAdapter=new MyProjectsAdapter(UserProfileActivity.this,list);
+                myProjectsAdapter=new MyProjectsAdapter2(UserProfileActivity.this,list,list2);
                 binding.userProjects.setAdapter(myProjectsAdapter);
             }
         });

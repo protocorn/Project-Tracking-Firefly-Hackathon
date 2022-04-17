@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.projecttracker.Adapater.ChipAdapter;
+import com.example.projecttracker.Adapater.ChipAdapter2;
 import com.example.projecttracker.Adapater.GitProjectAdapter;
 import com.example.projecttracker.Adapater.MyProjectsAdapter;
 import com.example.projecttracker.R;
@@ -46,7 +47,7 @@ public class ProfileFrag extends Fragment {
     List<String> list;
     ArrayList<String> projectlist;
     ArrayList<String> projectlist2;
-    ChipAdapter chipAdapter;
+    ChipAdapter2 chipAdapter;
     RequestQueue requestQueue;
     GitProjectAdapter gitProjectAdapter;
     MyProjectsAdapter myProjectsAdapter;
@@ -76,7 +77,7 @@ public class ProfileFrag extends Fragment {
                 binding.degName.setText(""+value.get("Degree"));
                 binding.yrPass.setText(""+value.get("Passing Year"));
 
-                chipAdapter = new ChipAdapter((List<String>) value.get("Skills"), getContext());
+                chipAdapter = new ChipAdapter2((List<String>) value.get("Skills"), getContext());
                 binding.skillList.setAdapter(chipAdapter);
 
             }

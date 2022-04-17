@@ -97,7 +97,7 @@
                 android:layout_marginBottom="15dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:listitem="@layout/chip">
+                tools:listitem="@layout/chip2">
 
             </androidx.recyclerview.widget.RecyclerView>
 

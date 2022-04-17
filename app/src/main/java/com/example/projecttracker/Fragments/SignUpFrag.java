@@ -52,7 +52,11 @@ public class SignUpFrag extends Fragment {
     ArrayAdapter<String> adapter;
     ArrayAdapter<String> adapter2;
     ArrayAdapter<String> adapter3;
-    ArrayAdapter<String> adapter4;
+
+    ArrayAdapter<String> year;
+    ArrayAdapter<String> degree;
+
+
     List<String> list;
     List<String> universitylist;
     List<String> Institutelist;
@@ -87,8 +91,14 @@ public class SignUpFrag extends Fragment {
                 "AI Foundations", "Google Cloud", "CyberSecurity", "Image & Video Processing", "Discrete Mathematics", "Executive Data Science", "Fluid Mechanics"
         };
 
-        String[] non_tech = new String[]{"Business Analyst", "Market Research Analyst", "Digital Marketing Strategist", "Social Media Manager", "Marketing Manager", "MS Excel", "Data Visualization in Excel", "PowerPoint", "Leadership Skills",
-                "English Communication Skills", "Presentation Skills", "Public Speaking"};
+        String[] yearlist = new String[]{"2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009",
+                "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024",
+                "2025", "2026", "2027", "2028", "2029", "2030"};
+
+        String[] degree_list = new String[]{"BE/B.TECH Aeronautical Engineering", "BE/B.TECH Automobile Engineering", "BE/B.TECH Civil Engineering",
+                "BE/B.TECH Computer Science and Engineering", "BE/B.TECH Biotechnology Engineering", "BE/B.TECH Electrical and Electronics Engineering",
+                "BE/B.TECH Electronics and Communication Engineering", "BE/B.TECH Information Technology", "BE/B.TECH Automation and Robotics", "BCA - Bachelor of Computer Applications",
+                "B.Sc.- Information Technology", "B.Sc. Mathematics"};
 
 
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
@@ -124,11 +134,6 @@ public class SignUpFrag extends Fragment {
         adapter2 = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, Institutelist);
         binding.autoText3.setAdapter(adapter2);
 
-        String[] spinner_list = new String[]{"Technical", "Non Technical"};
-
-        adapter3 = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, spinner_list);
-        binding.spinner.setAdapter(adapter3);
-
 
         binding.nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,15 +146,15 @@ public class SignUpFrag extends Fragment {
                     hashMap.put("name", binding.username.getText().toString());
                     hashMap.put("email", binding.email.getText().toString());
                     hashMap.put("password", binding.pass.getText().toString());
+                    hashMap.put("profile_url","");
                     binding.regStep1.setVisibility(View.GONE);
                     binding.regStep2.setVisibility(View.VISIBLE);
                     binding.nextBtn.setText("NEXT");
                 } else if (binding.nextBtn.getText().equals("NEXT")) {
                     hashMap.put("University", binding.autoText2.getText().toString());
                     hashMap.put("Institute", binding.autoText3.getText().toString());
-                    hashMap.put("Domain", binding.spinner.getSelectedItem().toString());
-                    hashMap.put("Degree", binding.currentDeg.getText().toString());
-                    hashMap.put("Passing Year", binding.yrPassout.getText().toString());
+                    hashMap.put("Degree", binding.degreeSpin.getSelectedItem().toString());
+                    hashMap.put("Passing Year", binding.yrSpin.getSelectedItem().toString());
                     binding.regStep2.setVisibility(View.GONE);
                     binding.regStep3.setVisibility(View.VISIBLE);
                     binding.nextBtn.setText("Register");
@@ -166,8 +171,8 @@ public class SignUpFrag extends Fragment {
                                         public void onSuccess(Void unused) {
                                             Toast.makeText(getContext(), "Sign-Up Was Successful", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(getContext(), MainActivity.class));
-                                            HashMap<String,Object> hashMap1=new HashMap<>();
-                                            hashMap1.put("uid",auth.getCurrentUser().getUid());
+                                            HashMap<String, Object> hashMap1 = new HashMap<>();
+                                            hashMap1.put("uid", auth.getCurrentUser().getUid());
                                             database.collection("Institutes").document(binding.autoText3.getText().toString()).collection("students").document(auth.getCurrentUser().getUid()).set(hashMap1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void unused) {
@@ -197,12 +202,16 @@ public class SignUpFrag extends Fragment {
         binding.chipList.setLayoutManager(linearLayoutManager);
         binding.chipList.setAdapter(chipAdapter);
 
-        if (binding.spinner.getSelectedItem().toString().equals("Technical")) {
-            adapter4 = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, technical);
-        } else {
-            adapter4 = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, non_tech);
-        }
-        binding.autoText.setAdapter(adapter4);
+
+        degree = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, degree_list);
+        binding.degreeSpin.setAdapter(degree);
+
+        year = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, yearlist);
+        binding.yrSpin.setAdapter(year);
+
+        adapter3 = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, technical);
+        binding.autoText.setAdapter(adapter3);
+
 
         binding.autoText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
