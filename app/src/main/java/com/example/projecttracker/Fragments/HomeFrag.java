@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.example.projecttracker.Adapater.YourPepsActivity;
+import com.example.projecttracker.PlagarismCheckerActivity;
 import com.example.projecttracker.R;
 import com.example.projecttracker.SearchUserActivity;
 import com.example.projecttracker.databinding.FragmentHomeBinding;
@@ -36,6 +38,19 @@ public class HomeFrag extends Fragment {
                 startActivity(new Intent(getContext(), SearchUserActivity.class));
             }
         });
+        binding.plagraismCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), PlagarismCheckerActivity.class));
+            }
+        });
+        binding.pepsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), YourPepsActivity.class));
+            }
+        });
+
         return binding.getRoot();
     }
 }

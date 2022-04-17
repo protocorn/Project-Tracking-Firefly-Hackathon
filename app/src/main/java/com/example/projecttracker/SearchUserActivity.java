@@ -94,7 +94,6 @@ public class SearchUserActivity extends AppCompatActivity {
                                     if (snapshot.get("Skills").toString().contains(skill)
                                             && snapshot.get("Passing Year").equals(year1)
                                             && snapshot.get("Degree").equals(degree1)) {
-                                        Toast.makeText(SearchUserActivity.this, "YESSS", Toast.LENGTH_SHORT).show();
                                         if(from1.equals("My Institute")&& snapshot.get("Institute").equals(value1.get("Institute"))){
                                             Users users = snapshot.toObject(Users.class);
                                             users.setUserid(snapshot.getId());
